@@ -60,7 +60,7 @@ local server_config = {
   end,
   init_options = {
     cache = {
-      directory = vim.env.XDG_CACHE_HOME .. "/ccls/",
+      directory = (vim.env.XDG_CACHE_HOME or (vim.env.HOME .. "/.cache")) .. "/ccls/",
       -- or vim.fs.normalize "~/.cache/ccls" -- if on nvim 0.8 or higher
     },
   },
@@ -69,6 +69,7 @@ local server_config = {
 }
 --require("ccls").setup({ lsp = { lspconfig = server_config } })
 require("lspconfig").clangd.setup({})
+require("lspconfig").gopls.setup({})
 vim.lsp.config("volar", {
   -- add filetypes for typescript, javascript and vue
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
@@ -174,3 +175,23 @@ vim.diagnostic.config({
   severity_sort = false,
 })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+require("nvim-web-devicons").setup({
+  -- your personnal icons can go here (to override)
+  -- you can specify color or cterm_color instead of specifying both of them
+  -- DevIcon will be appended to `name`
+  override = {
+    zsh = {
+      icon = "",
+      color = "#428850",
+      cterm_color = "65",
+      name = "Zsh",
+    },
+  },
+  -- globally enable different highlight colors per icon (default to true)
+  -- if set to false all icons will have the default icon's color
+  color_icons = true,
+  -- globally enable default icons (default to false)
+  -- will get overriden by `get_icons` option
+  default = true,
+})
+require("go").setup()
