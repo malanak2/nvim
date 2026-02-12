@@ -70,6 +70,7 @@ local server_config = {
 --require("ccls").setup({ lsp = { lspconfig = server_config } })
 require("lspconfig").clangd.setup({})
 require("lspconfig").gopls.setup({})
+require("lspconfig").pyright.setup({})
 vim.lsp.config("volar", {
   -- add filetypes for typescript, javascript and vue
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
