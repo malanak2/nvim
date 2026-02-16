@@ -152,29 +152,26 @@ require("clangd_extensions").setup({
 local opt = vim.opt
 opt.foldmethod = "indent"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_lines = false,
 })
--- Disable virtual_text since it's redundant due to lsp_lines.
-vim.diagnostic.config({
-  virtual_lines = true,
-})
-vim.diagnostic.config({
-  virtual_text = false,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
-  signs = true,
-  underline = true,
-  update_in_insert = true,
-  severity_sort = false,
-})
+--vim.diagnostic.config({
+-- virtual_text = false,
+-- float = {
+--   focusable = false,
+--   style = "minimal",
+--   border = "rounded",
+--   source = "always",
+--   header = "",
+--   prefix = "",
+-- },
+-- signs = true,
+-- underline = true,
+-- update_in_insert = true,
+-- severity_sort = false,
+--})
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 require("nvim-web-devicons").setup({
   -- your personnal icons can go here (to override)
